@@ -9,24 +9,32 @@ namespace EmployeeWage
     public class Emp
     {
         public int fullTime = 1;
-        int empHr = 0;
-        int empWage = 0;
-        public void Wage(string comp, int wagePerHr)
+        public int partTime = 2;
+        public int empHr = 0;
+        public int empWage = 0;
+        public int totalWage = 0;
+        public void Wage(string comp, int wagePerHR, int totalWorkingdays, int totalWorkingHR)
         {
-            Random random = new Random();
-            int attendCheck = random.Next(0, 2);
-            if (attendCheck == fullTime)
+            for (int i = 0; i < totalWorkingdays; i++)
             {
-                empHr = 8;
-                Console.WriteLine($"\nThe Employee is present.");
+               
+                Random random = new Random();
+                int attendCheck = random.Next(0, 3);
+                if (attendCheck == fullTime)
+                {
+                    empHr = 8;
+                }
+                else if (attendCheck == partTime)
+                {
+                    empHr = 4;
+                }
+                else
+                {
+                    empHr = 0;
+                }
+                empWage = empHr * wagePerHR;
+                totalWage = totalWage + empWage;
             }
-            else
-            {
-                empHr = 0;
-                Console.WriteLine($"\nThe Employee wage is absent.");
-            }
-            empWage = empHr * wagePerHr;
-            Console.WriteLine($"\nThe Empployee wage is {empWage}");
         }
     }
 }

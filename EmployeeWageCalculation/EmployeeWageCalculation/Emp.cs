@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeWage
 {
+    // Already Using class
     public class Emp
     {
         public void Wage()
